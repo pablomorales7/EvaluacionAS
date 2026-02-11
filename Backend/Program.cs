@@ -53,6 +53,10 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
 // --- Construye la App ---
 var app = builder.Build();
 
+// 👉 HABILITAR ARCHIVOS ESTÁTICOS
+app.UseDefaultFiles();   // Busca index.html automáticamente
+app.UseStaticFiles();    // Permite servir wwwroot
+
 // Middlewares
 //if (app.Environment.IsDevelopment())
 //{
@@ -75,7 +79,7 @@ UseAuthorization()
 MapControllers()
 */
 
-
+app.UseRouting();
 app.UseHttpsRedirection();
 app.UseCors("FrontendPolicy");
 app.UseAuthentication();
